@@ -34,7 +34,8 @@ app.use(express.urlencoded({ extended: true }));
 // 3. Enable CORS (allows frontend to make requests to backend)
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin:
+      process.env.FRONTEND_URL || "https://todo-frontend-zeb2.vercel.app/",
     credentials: true,
   }),
 );
