@@ -87,7 +87,7 @@ const loginUser = async (req, res) => {
     console.log("User found:", user.email); // Debug log
 
     // Compare password
-    const isMatch = await user.matchPassword(password);
+    const isMatch = user.matchPassword(password);
     console.log("Password match:", isMatch); // Debug log
 
     if (!isMatch) {
