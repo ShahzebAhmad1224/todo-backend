@@ -112,6 +112,8 @@ const loginUser = async (req, res) => {
     });
   } catch (error) {
     console.error("Login error:", error);
+    console.error("LOGIN ERROR FULL:", error); // 👈 ADD THIS
+    console.error(error.stack);
     res.status(500).json({
       success: false,
       message: "Server error during login",
