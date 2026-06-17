@@ -18,8 +18,8 @@ userSchema.pre("save", function () {
   }
 });
 
-userSchema.methods.matchPassword = function (password) {
-  return bcrypt.compareSync(password, this.password);
+userSchema.methods.matchPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
 };
 
 module.exports = mongoose.model("User", userSchema);
