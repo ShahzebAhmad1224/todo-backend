@@ -34,10 +34,18 @@ app.use(express.urlencoded({ extended: true }));
 // 3. Enable CORS (allows frontend to make requests to backend)
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
+    origin: "*", // During debugging; tighten later
+    credentials: false, // Must be false when origin is "*"
   }),
 );
+
+// Add this AFTER all your routes, before startServer():
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `Route not found: ${req.method} ${req.path}`,
+  });
+});
 
 // ============ ROUTE SETUP ============
 // Routes define what happens when someone visits different URLs
